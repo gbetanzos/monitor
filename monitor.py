@@ -10,7 +10,7 @@ from email.mime.text import MIMEText
 from smtplib import SMTP  
 
 
-baseurl='https://server.org/sec123/'
+baseurl='https://server.org/sec1231234567890/'
 emails=['guillermo@server.org','server@gmail.com']
 videos=[]
 conn = MySQLdb.connect(host="localhost", user="videosu", 
