@@ -6,7 +6,6 @@ from os import listdir
 from os.path import isfile,isdir, join
 from datetime import datetime, date,time
 from email.mime.text import MIMEText
-#from smtplib import SMTP_SSL as SMTP  
 from smtplib import SMTP  
 
 
@@ -18,6 +17,7 @@ conn = MySQLdb.connect(host="localhost", user="videosu",
 
 def notify(videos,emails):
     global baseurl
+    global mypath
     SMTPserver = 'mail.server.org'
     sender =     'guillermo@server.org'
     destination = ['guillermo@server.org',]
@@ -35,8 +35,9 @@ Hi, there are new videos:
     subject='New activity at bzlair'
 
     for v in videos:
-        log('Including '+v+' in the notification')
-        content+=baseurl+v+'\n'
+		 v=v.replace(mypath,'')
+		 log('Including '+v+' in the notification')
+		 content+=baseurl+v+'\n'
     
     content+='\n '+str(len(videos))+ ' videos found.\n\nThanks'
     
